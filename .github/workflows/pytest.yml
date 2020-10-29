@@ -1,0 +1,28 @@
+on: push
+name: on push
+jobs:
+  gitHubActionForPytest:
+    name: GitHub Action for pytest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pip
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
+      - name: Install dependencies with pip
+        run: |
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Run Pytest
+        run: pytest -v
