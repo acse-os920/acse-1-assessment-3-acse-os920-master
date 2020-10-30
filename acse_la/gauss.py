@@ -108,8 +108,6 @@ def matmul(a, b):
     >> C
     ValueError: Incompatible dimensions
     """
-    #from IPython import embed
-    #embed()
     n, p = len(a), len(a[0])
     p1, q = len(b), len(b[0])
     if p != p1:
@@ -142,4 +140,3 @@ def zeromat(p, q):
     [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
     """
     return [[0]*q for i in range(p)]
-
