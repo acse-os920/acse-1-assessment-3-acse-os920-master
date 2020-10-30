@@ -2,7 +2,6 @@ import pytest
 import sys
 import os
 
-
 sys.path.insert(0, "../acse_la")
 
 from acse_la import gauss, matmul, zeromat
