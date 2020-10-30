@@ -1,6 +1,11 @@
+import numpy as np
+
+
 def det(a):
 
-    d = 0
+    det3 = 0
+
+    #a = a.tolist()
 
     if(len(a) == 2):
         value = a[0][0]*a[1][1] - a[0][1]*a[1][0]
@@ -8,12 +13,14 @@ def det(a):
 
     for col in range(len(a)):
 
-        ab = [r[:col] + r[col+1:] for r in (a[:0] + a[1:])]
-                
-        if not ab:
-            
-            continue
-                             
-        d = d + (-1)**(0 + col)*det(ab)*a[0][col]
+        for r in (a[:0] + a[1:]):
 
-    return d
+            ab = [r[:col] + r[col+1:]]
+
+            if not ab:
+
+                continue
+
+            det3 = det3 + (-1)**(0 + col)*det(ab)*a[0][col]
+
+    return det3
