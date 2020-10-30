@@ -130,5 +130,5 @@ def write_file(results):
 
 
 if __name__ == "__main__":
-    results = [time_mat(i) for i in range(2, 43, 20)]
+    results = [time_mat(i) for i in range(2, 203, 20)]
     write_file(results)
